@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+{% block main%}
+{{ super() }}
+<h1>Usuário!!!</h1>
+<table>
+    <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Ações</th>
+    </tr>
+    {% for u in usuarios %}
+    <tr>
+        <td>{{u.nome}}</td>
+        <td>{{u.email}}</td>
+        <td><button>Alterar</button>
+            <form action="/usuarios/delete?email={{u.email}}" method="post" style="display: inline">
+            <button>Excluir</button>
+            </form>
+        </td>
+
+    </tr>
+        {% endfor %}
+    {% if not usuarios%}
+    <tr>
+    <td colspan ="3" style="text-align:center">nenhum usuário encontrado</td>
+    </tr>
+    {% endif%}
+</table>
+{% endblock main%}
+
+
+
+{% block title%}
+Usuário_!!!
+{% endblock title%}
+
+
